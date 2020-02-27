@@ -3,12 +3,23 @@
 {% block title %}Pomelopay Dashboard - Company {% endblock %}
 
 {% block body %}
-
     <div class="container">
         {% for message in app.flashes('success') %}
             <div class="alert alert-success" role="alert">
                 {{ message }}
             </div>
         {% endfor %}
+
+
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Company</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item active" aria-current="page">Company</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
     </div>
 {% endblock %}
