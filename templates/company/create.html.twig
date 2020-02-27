@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pomelopay Dashboard - Create Company {% endblock %}
+
+{% block body %}
+    <div class="container">
+
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Create Company</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Company</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Create Company</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        {{ form_start(companyForm,{attr: {id :'companyForm'}}) }}
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">{{ form_label(companyForm.name) }}</label>
+                    {{ form_widget(companyForm.name, {'attr':{'placeholder':'Enter Company Name','class': 'form-control' }}) }}
+                    {% if form_errors(companyForm.name) | length %}
+                        <span class="text-danger"> {{ form_errors(companyForm.name) }}</span>
+                    {% endif %}
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">{{ form_label(companyForm.tax_number) }}</label>
+                    {{ form_widget(companyForm.tax_number, {'attr':{'placeholder':'Enter Tax Number', 'class': 'form-control'}}) }}
+                    {% if form_errors(companyForm.tax_number) | length %}
+                        <span class="text-danger"> {{ form_errors(companyForm.tax_number) }}</span>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">{{ form_label(companyForm.block_no) }}</label>
+                    {{ form_widget(companyForm.block_no, {'attr':{'placeholder':'Enter Block Number', 'class': 'form-control'}}) }}
+                    {% if form_errors(companyForm.block_no) | length %}
+                        <span class="text-danger"> {{ form_errors(companyForm.block_no) }}</span>
+                    {% endif %}
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">{{ form_label(companyForm.floor_no) }}</label>
+                    {{ form_widget(companyForm.floor_no, {'attr':{'placeholder':'Enter Floor Number', 'class': 'form-control'}}) }}
+                    {% if form_errors(companyForm.floor_no) | length %}
+                        <span class="text-danger"> {{ form_errors(companyForm.floor_no) }}</span>
+                    {% endif %}
+                </div>
+            </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputEmail4">{{ form_label(companyForm.unit_no) }}</label>
+                {{ form_widget(companyForm.unit_no, {'attr':{'placeholder':'Enter Unit Number', 'class': 'form-control'}}) }}
+                {% if form_errors(companyForm.unit_no) | length %}
+                    <span class="text-danger"> {{ form_errors(companyForm.unit_no) }}</span>
+                {% endif %}
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="inputEmail4">{{ form_label(companyForm.street_name) }}</label>
+                {{ form_widget(companyForm.street_name, {'attr':{'placeholder':'Enter Street Name', 'class': 'form-control'}}) }}
+                {% if form_errors(companyForm.street_name) | length %}
+                    <span class="text-danger"> {{ form_errors(companyForm.street_name) }}</span>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputEmail4">{{ form_label(companyForm.postal_code) }}</label>
+                {{ form_widget(companyForm.postal_code, {'attr':{'placeholder':'Enter Postal Code', 'class': 'form-control'}}) }}
+                {% if form_errors(companyForm.postal_code) | length %}
+                    <span class="text-danger"> {{ form_errors(companyForm.postal_code) }}</span>
+                {% endif %}
+            </div>
+        </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        {{ form_end(companyForm) }}
+
+    </div>
+
+{% endblock %}

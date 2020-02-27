@@ -13,9 +13,13 @@
     </head>
     <body>
 
+        <!-- Navigation -->
         {% include '_nav.html.twig' %}
 
+        <!-- Body -->
         {% block body %}{% endblock %}
+
+        <!-- Javscript -->
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
