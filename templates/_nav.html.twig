@@ -14,11 +14,15 @@
                     <i class="fa fa-home"></i>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Company
                     <i class="fa fa-building"></i>
                 </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ path('view_company') }}">View Companies</a>
+                    <a class="dropdown-item" href="{{ path('create_company') }}">Create Companies</a>
+                </div>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">

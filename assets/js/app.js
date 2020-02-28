@@ -4,7 +4,4 @@ import '../css/app.scss';
 import $ from 'jquery';
 
 require('bootstrap');
-
-$(document).ready(function() {
-  console.log('in');
-});
+require('datatables.net-bs4/css/dataTables.bootstrap4.css');
