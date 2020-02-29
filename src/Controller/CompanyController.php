@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Company;
 use App\Form\CompanyType;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -106,8 +105,8 @@ class CompanyController extends AbstractController
 		    $entity_manager->persist ($company);
 		    $entity_manager->flush();
 		    return true;
-	    }else {
-	    	return false;
 	    }
+	    	return false;
+	    
     }
 }

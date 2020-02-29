@@ -24,12 +24,18 @@
                     <a class="dropdown-item" href="{{ path('create_company') }}">Create Companies</a>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Transaction
                     <i class="fa fa-money"></i>
                 </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ path('view_transaction') }}">View Transaction</a>
+                    <a class="dropdown-item" href="{{ path('create_transaction') }}">Create Transaction</a>
+                </div>
             </li>
+
         </ul>
     </div>
 </nav>

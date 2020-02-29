@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -30,6 +32,16 @@ class Company
      * @ORM\Column(type="json")
      */
     private $address = [];
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Transaction", mappedBy="company")
+     */
+    private $transactions;
+
+    public function __construct()
+    {
+        $this->transactions = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -68,6 +80,37 @@ class Company
     public function setAddress(array $address): self
     {
         $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Transaction[]
+     */
+    public function getTransactions(): Collection
+    {
+        return $this->transactions;
+    }
+
+    public function addTransaction(Transaction $transaction): self
+    {
+        if (!$this->transactions->contains($transaction)) {
+            $this->transactions[] = $transaction;
+            $transaction->setCompany($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTransaction(Transaction $transaction): self
+    {
+        if ($this->transactions->contains($transaction)) {
+            $this->transactions->removeElement($transaction);
+            // set the owning side to null (unless already changed)
+            if ($transaction->getCompany() === $this) {
+                $transaction->setCompany(null);
+            }
+        }
 
         return $this;
     }
