@@ -60,7 +60,7 @@ class TransactionType extends AbstractType
 	            ]
 	            
             ])
-            ->add('company', EntityType::class, [
+            /*->add('company', EntityType::class, [
             	'class' => Company::class,
 	            'query_builder' => function (EntityRepository $er){
             	    $er ->createQueryBuilder('c')
@@ -72,7 +72,7 @@ class TransactionType extends AbstractType
 	            'required'      => true,
 	            'mapped'        => true,
 	            'label'         => 'Company'
-            ])
+            ])*/
         ;
     }
 

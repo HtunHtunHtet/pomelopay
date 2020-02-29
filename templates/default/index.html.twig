@@ -3,20 +3,13 @@
 {% block title %}Hello DefaultController!{% endblock %}
 
 {% block body %}
-<div class="container">
-    <div class="alert alert-primary" role="alert">
-        A simple primary alert—check it out!
-    </div>
-
+<div class="container" style="margin-top:20px;">
     <div class="row">
-        <div class="col-sm">
-            One of three columns
-        </div>
-        <div class="col-sm">
-            One of three columns
-        </div>
-        <div class="col-sm">
-            One of three columns
+        <div class="col-md-12">
+            <div class="jumbotron">
+                <h1 class="display-4">Welcome !!</h1>
+                <p class="lead"> Hello, <a href="#">{{ app.user.email }}</a>, Welcome from the dashboard</p>
+            </div>
         </div>
     </div>
 </div>

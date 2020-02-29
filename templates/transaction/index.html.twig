@@ -44,7 +44,7 @@
                                 <td>{{ transaction.currency }}</td>
                                 <td>{{ transaction.amount }}</td>
                                 <td>{{ transaction.status }}</td>
-                                <td><a href="{{ path('update_company',{'id':transaction.company.id} ) }}" >{{ transaction.company.name }}</a></td>
+                                <td>{{ transaction.company.name }}</td>
                                 <td>
                                     <a class="btn btn-primary" href="#" role="button">Update</a>
                                     <a class="btn btn-danger" href="#"  role="button">Delete</a>

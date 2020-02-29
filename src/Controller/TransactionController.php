@@ -61,6 +61,7 @@ class TransactionController extends AbstractController
     private function handleTransactionForm ( $form , $transaction , $request)
     {
     	$form->handleRequest($request);
+    	$company = $this->getUser()->getCompany();
 	
 	    if($form->isSubmitted() && $form->isValid()) {
 		    $entity_manager = $this->getDoctrine()->getManager();
@@ -69,7 +70,7 @@ class TransactionController extends AbstractController
 		    
 		    $transaction  ->setCurrency($form->get('currency')->getData());
 		    $transaction  ->setStatus($form->get('status')->getData());
-		    $transaction  ->setCompany($form->get('company')->getData());
+		    $transaction  ->setCompany($company);
 		    $transaction  ->setAmount($amount);
 		    $entity_manager ->persist($transaction);
 		    $entity_manager ->flush();
