@@ -17,7 +17,7 @@
             </div>
         </div>
 
-        {{ form_start(transactionForm,{attr: {id :'companyForm'}}) }}
+        {{ form_start(transactionForm,{attr: {id :'transactionForm'}}) }}
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label>{{ form_label(transactionForm.currency) }}</label>
@@ -48,9 +48,8 @@
             </div>
 
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" value="submit">Submit</button>
         {{ form_end(transactionForm) }}
-
     </div>
 
 {% endblock %}

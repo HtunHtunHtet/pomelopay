@@ -1,14 +1,22 @@
 <?php
 	
 	
-	/*namespace App\Tests\Controller;
+	namespace App\Tests\Controller;
 	
-	use PHPUnit\Framework\TestCase;
+	use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 	
-	class DefaultControllerTest extends TestCase
+	class DefaultControllerTest extends WebTestCase
 	{
-		public function testThatYouNeed ()
+		public function testIndex()
 		{
-			$this->assertTrue(false);
+			$client = static::createClient([],[
+				'PHP_AUTH_USER' => 'ryanhhh91@gmail.com',
+				'PHP_AUTH_PW'   => 'ryan123'
+			]);
+			$client->request('GET', '');
+			
+			
+			//expected to see Hello at the page.
+			$this->assertContains('Hello!',$client->getResponse()->getContent());
 		}
-	}*/
+	}
