@@ -11,6 +11,30 @@
             </div>
         {% endfor %}
 
+        <!-- Modal -->
+        <div class="modal fade" id="deleteTransaction" tabindex="-1" role="dialog" aria-labelledby="deleteTransactionTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+               <form action="{{ path('delete_transaction') }}" method="post">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="deleteTransactionTitle">Delete Confirmation</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure you wanna delete <strong>transaction id <span id="transactionId"></span></strong>
+                        </div>
+                        <input type="hidden" id="transactionIdHidden" name="transactionIdHidden"/>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" id="confirmDelete">Confirm</button>
+                        </div>
+                    </div>
+               </form>
+            </div>
+        </div>
+
 
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 class="h2">View Transactions</h1>
@@ -26,7 +50,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class='table-responsive table-forced-height'>
-                    <table id="companies" class="table table-striped table-bordered" style="width:100%" >
+                    <table id="transaction" class="table table-striped table-bordered" style="width:100%" >
                         <thead>
                         <tr>
                             <td>Transaction Id</td>
@@ -46,8 +70,8 @@
                                 <td>{{ transaction.status }}</td>
                                 <td>{{ transaction.company.name }}</td>
                                 <td>
-                                    <a class="btn btn-primary" href="#" role="button">Update</a>
-                                    <a class="btn btn-danger" href="#"  role="button">Delete</a>
+                                    <a class="btn btn-primary" href="{{ path('update_transaction', {'id':transaction.id} ) }}" role="button">Update</a>
+                                    <a class="btn btn-danger delete-transaction-btn" href="#" data-transactionid = {{ transaction.id }} role="button" data-toggle="modal" data-target="#deleteTransaction">Delete</a>
                                 </td>
                             </tr>
                         {% endfor %}
@@ -62,6 +86,6 @@
 
    {% block javascripts %}
        {{ parent() }}
-       {#{{ encore_entry_script_tags('company') }}#}
+       {{ encore_entry_script_tags('transaction') }}
 
    {% endblock %}

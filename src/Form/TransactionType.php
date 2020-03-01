@@ -37,7 +37,7 @@ class TransactionType extends AbstractType
 	        
 	        ->add('amount', MoneyType::class,[
 	        	'currency'      => false,
-		        'divisor'       => 100,
+		        //'divisor'       => 100,
 		        'label'         => 'Amount',
 		        'required'      => true,
 		        'mapped'        => true,

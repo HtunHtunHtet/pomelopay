@@ -25,8 +25,8 @@ class TransactionController extends AbstractController
     public function index()
     {
     	
-    	//find all transactions
-    	$transactions = $this->getDoctrine()->getRepository(Transaction::class)->findAll();
+	    $currentCompany = $this->getUser()->getCompany();
+    	$transactions = $this->getDoctrine()->getRepository(Transaction::class)->findBy(['company' =>$currentCompany]);
     	
 	    return $this->render( 'transaction/index.html.twig', [
 		    'transactions' => $transactions
@@ -55,6 +55,62 @@ class TransactionController extends AbstractController
 	    	'transactionForm' => $form->createView()
 	    ]);
 	    
+    }
+	
+	
+	/**
+	 * @Route ("/{id}/update", name = "update_transaction")
+	 * @param Request $request
+	 * @param $id
+	 * @return Response
+	 */
+    
+    public function updateTransaction ( Request $request , $id )
+    {
+    	
+    	$transaction  = $this->getDoctrine()->getRepository(Transaction::class)->find($id);
+    	
+    	if(!$transaction)
+    		throw $this->createNotFoundException('Unable to find transaction Entity');
+    	
+    	$form = $this->createForm(TransactionType::class,$transaction);
+    	
+    	$isSubmitted = $this->handleTransactionForm($form, $transaction, $request);
+    	
+    	if($isSubmitted) {
+    		$this->addFlash('success','Transaction Successfully Updated.');
+    		
+    		return $this->redirectToRoute('view_transaction');
+	    }
+    	
+    	return $this->render ('transaction/update.html.twig', [
+    		'transactionForm' => $form->createView(),
+		    'transactionEntity'   => $transaction
+	    ]);
+    
+    }
+	/**
+	 * @Route ("/delete", name = "delete_transaction")
+	 * @param Request $request
+	 * @return Response
+	 */
+    public function deleteTransaction ( Request $request )
+    {
+    	$id = $request->get('transactionIdHidden');
+    	$transaction = $this->getDoctrine()->getRepository(Transaction::class)->find($id);
+	
+	    if(!$transaction)
+		    throw $this->createNotFoundException('Unable to find transaction Entity');
+	    
+	    $em = $this->getDoctrine()->getManager();
+	    $em ->remove($transaction);
+	    $em ->flush();
+    	
+	    $this->addFlash('success','Transaction Successfully deleted.');
+	    
+	    //TODO: Logging
+	
+	    return $this->redirectToRoute('view_transaction');
     }
     
     
