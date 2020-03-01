@@ -48,10 +48,9 @@
 				'PHP_AUTH_PW'   => 'ryan123'
 			]);
 			
-			
-			
 			//change {id} of the  update base on database transationId;
 			$crawler = $client->request('GET', '/transaction/1/update');
+			
 			$form = $crawler->selectButton('Submit') ->form();
 			$form['transaction[currency]'] -> select('S$');
 			//$form['transaction[amount]'] = 'test';
@@ -73,7 +72,6 @@
 			
 			$crawler = $client->request('GET', '/transaction/');
 			$form = $crawler->selectButton('Submit')->form();
-			
 			
 			//change the transaction value that is inside database
 			$form['transactionIdHidden'] = '2';
