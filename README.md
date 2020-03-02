@@ -3,6 +3,7 @@
     <li>PHP 7.2.20</li>
     <li>MYSQL 5.0.12</li>
     <li>Symfony 5 </li>
+    <li>Symfony Flex</li>
     <li>Webpack </li> 
     <li>MAMP environment **local**</li>
 </ul>
