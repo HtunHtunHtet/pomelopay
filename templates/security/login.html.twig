@@ -65,8 +65,7 @@
 <!-- Body -->
 {% block body %}
     <form method="post" class="form-signin">
-        {% if error %}
-        {% endif %}
+
 
         {% if app.user %}
             <div class="mb-3">
@@ -76,6 +75,9 @@
 
         <img class="mb-4"  src="{{ asset('build/images/logo.png') }}" alt="logo" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
         <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
         <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
 
