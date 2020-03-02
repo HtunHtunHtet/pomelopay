@@ -63,13 +63,20 @@ php bin/console doctrine:schema:update --force
 php bin/console doctrine:fixtures:load
 ```
 
+* Clear Cache
+
+```genericsql
+php bin/console cache:clear
+php bin/console cache:clear --env=prod
+php bin/console cache:warmup
+```
+
 * you can setup the symfony local webserver by following this 
 [steps](https://symfony.com/doc/current/setup/symfony_server.html) if you are willning to use build in symfony server.
 
 * For my particular preference, I register my symfony application inside Mamp/conf/httpd.conf as follow :
 
 ```genericsql
-# This is the configuration for POMELOPAY project
 Listen *:8706
 <VirtualHost *:8706>
     DocumentRoot /Applications/MAMP/htdocs/pomelopay/public
@@ -81,10 +88,9 @@ Listen *:8706
 				SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
     </Directory>
 </VirtualHost>
-#END OF POMELOPAY
 ```
 
-* head over to ``http://localhost:8706/`` to start using apps.
+* restart the local server and head over to ``http://localhost:8706/`` to start using apps.
 
 * Login credentials are as follow. You can check the credentials inside ``src/DataFixtures/UserFixtuers.php`` as well.
 
@@ -96,10 +102,16 @@ username :simon@pomelopay.com
 password : simon123
 ```
 
-
-##PHP UINT TESTING
-
-3) phpunit test =>  ./bin/phpunit
+* the application can be found at the following link as well. 
+[http://pomelo.htunhtunhtet.me](http://pomelo.htunhtunhtet.me/login)
 
 
-http://pomelo.htunhtunhtet.me
+##PHP  TESTING
+
+* In order to run php testing run the following command 
+```genericsql
+php bin/phpunit
+```
+
+* You can find the php testing file under ``tests/Controller`` folder as well.
+
