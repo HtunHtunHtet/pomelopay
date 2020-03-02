@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Pomelopay Dashboard - Create Transaction {% endblock %}
+{% block title %}Pomelopay Dashboard - Update Transaction {% endblock %}
 
 {% block body %}
     <div class="container">
@@ -17,7 +17,7 @@
             </div>
         </div>
 
-        {{ form_start(transactionForm,{attr: {id :'companyForm'}}) }}
+        {{ form_start(transactionForm,{attr: {id :'transactionForm'}}) }}
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label>{{ form_label(transactionForm.currency) }}</label>
